@@ -17,7 +17,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="w-full min-h-screen flex flex-col justify-center items-center">
+      <div className="w-full min-h-screen flex flex-col justify-start items-center">
         <Routes>
           <Route path="/" element={<Home posts={posts} />} />
           <Route path="/archive" element={<div>Archive</div>} />
