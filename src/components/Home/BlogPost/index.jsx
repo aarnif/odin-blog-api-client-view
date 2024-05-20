@@ -1,7 +1,10 @@
 import Icons from "./Icons";
+import Comments from "./Comments";
 import { Link } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 
 const BlogPost = ({ post }) => {
+  const match = useMatch("/posts/:id");
   return (
     <div
       key={post.id}
@@ -47,6 +50,7 @@ const BlogPost = ({ post }) => {
       </div>
 
       <Icons post={post} />
+      {match && <Comments comments={post.comments} />}
     </div>
   );
 };

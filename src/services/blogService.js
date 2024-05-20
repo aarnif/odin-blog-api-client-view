@@ -6,4 +6,12 @@ const getAllPosts = async () => {
   return response.data;
 };
 
-export default { getAllPosts };
+const addComment = async (postId, newComment) => {
+  const response = await axios.post(
+    `${baseUrl}/posts/${postId}/comments`,
+    newComment
+  );
+  return response.data;
+};
+
+export default { getAllPosts, addComment };
