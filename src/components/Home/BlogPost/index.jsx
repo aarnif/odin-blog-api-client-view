@@ -1,4 +1,5 @@
 import Icons from "./Icons";
+import { Link } from "react-router-dom";
 
 const BlogPost = ({ post }) => {
   return (
@@ -6,7 +7,9 @@ const BlogPost = ({ post }) => {
       key={post.id}
       className="w-full flex flex-col justify-center items-start mb-8"
     >
-      <h1 className="text-3xl font-bold">{post.title}</h1>
+      <Link to={`/posts/${post.id}`}>
+        <h1 className="text-3xl font-bold">{post.title}</h1>
+      </Link>
       <h2 className="mt-4 text-xl text-slate-500">{post.lead}</h2>
 
       <div className="w-full flex justify-start items-center mt-4 pb-4">
