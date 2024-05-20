@@ -6,9 +6,9 @@ import { useState } from "react";
 const Header = () => {
   const { scrollY, scrollYProgress } = useScroll();
   const [showHeader, setShowHeader] = useState(0);
-  const headerHeightInPixels = 80;
+  const headerHeightInPixels = 130;
   const headerBuffer = 5;
-  const headerScrollAmount = 1;
+  const headerScrollAmount = 10;
 
   useMotionValueEvent(scrollY, "change", () => {
     console.log("Show header:", showHeader);
@@ -35,22 +35,26 @@ const Header = () => {
 
   return (
     <motion.header
-      className="fixed w-full flex justify-center items-center shadow-lg z-10 bg-white"
+      className="fixed w-full flex flex-col justify-center items-center shadow-lg z-10 bg-white"
       style={{
         height: headerHeightInPixels,
         translateY: showHeader,
       }}
     >
-      <nav className="flex-grow flex justify-between items-center">
-        <h1 className="flex-grow text-center font-title text-4xl">
-          BLOG SERVICE
+      <div className="w-full flex-grow basis-3/5 flex justify-center items-center border-b border-b-slate-300">
+        <h1 className="w-full text-center font-title text-2xl font-bold">
+          Tech Visionary
         </h1>
-        <ul className="max-w-[1000px] flex-grow flex justify-around items-center text-xl font-nav font-extrabold">
-          <LinkItem to={"/"} itemName={"Home"} />
-          <LinkItem to={"/archive"} itemName={"Archive"} />
-          <LinkItem to={"/about"} itemName={"About"} />
-        </ul>
-      </nav>
+      </div>
+      <div className="w-full flex-grow basis-2/5 flex justify-center items-center border-b border-b-slate-300">
+        <nav className="max-w-[260px] flex-grow h-full flex justify-center items-center">
+          <ul className="flex-grow h-full flex justify-around items-center text-lg">
+            <LinkItem to={"/"} itemName={"Home"} />
+            <LinkItem to={"/archive"} itemName={"Archive"} />
+            <LinkItem to={"/about"} itemName={"About"} />
+          </ul>
+        </nav>
+      </div>
     </motion.header>
   );
 };
