@@ -1,23 +1,22 @@
+import useFetchPosts from "./hooks/useFetchPosts.js";
 import Header from "./components/Header/index.jsx";
 import Home from "./components/Home/index.jsx";
 import Footer from "./components/Footer/index.jsx";
 import SinglePostView from "./components/Home/BlogPost/SinglePostView.jsx";
 
-import blogService from "./services/blogService.js";
-import { useState, useEffect } from "react";
 import { Routes, Route, useMatch } from "react-router-dom";
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
   const match = useMatch("/posts/:id");
-
-  useEffect(() => {
-    blogService.getAllPosts().then((posts) => setPosts(posts));
-  }, []);
+  const { posts, loading } = useFetchPosts();
 
   const post = match ? posts.find((post) => post.id === match.params.id) : null;
 
   console.log("All blogposts:", posts);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
