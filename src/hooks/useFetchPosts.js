@@ -7,10 +7,11 @@ const useFetchPosts = (sortBy) => {
 
   useEffect(() => {
     blogService.getAllPosts(sortBy).then((posts) => {
+      console.log("Setting posts in useFetchPosts:");
       setPosts(posts);
       setLoading(false);
     });
-  }, []);
+  }, [sortBy]);
 
   return { posts, loading };
 };
