@@ -10,7 +10,7 @@ const Icons = ({ post }) => {
         hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition"
         >
           <Icon path={mdiHeartOutline} size={1.5} />
-          <div className="text-lg">{post.comments.length}</div>
+          <div className="text-lg">{post.likes}</div>
         </div>
         <div
           className="w-24 h-14 mr-4 flex justify-around items-center border border-slate-500 rounded-full        

@@ -2,6 +2,7 @@ import useFetchPosts from "./hooks/useFetchPosts.js";
 import Header from "./components/Header/index.jsx";
 import Home from "./components/Home/index.jsx";
 import Archive from "./components/Archive/index.jsx";
+import About from "./components/About.jsx";
 import Footer from "./components/Footer/index.jsx";
 import SinglePostView from "./components/Home/BlogPost/SinglePostView.jsx";
 
@@ -29,7 +30,7 @@ const App = () => {
           <Route path="/archive?sort=createdAt" element={<Archive />} />
           <Route path="/archive?sort=likes" element={<Archive />} />
           <Route path="/archive?sort=comments" element={<Archive />} />
-          <Route path="/about" element={<div>About</div>} />
+          <Route path="/about" element={<About />} />
           <Route path="/posts/:id" element={<SinglePostView post={post} />} />
         </Routes>
       </div>
