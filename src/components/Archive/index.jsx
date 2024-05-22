@@ -1,7 +1,8 @@
 import Item from "./Item";
 import useFetchPosts from "../../hooks/useFetchPosts";
+import SearchBox from "../SearchBox";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, forwardRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiMagnify } from "@mdi/js";
@@ -23,7 +24,7 @@ const FilterByButton = ({ to, name, text, sortedBy }) => {
   );
 };
 
-const FilterByPostMenu = ({ sortedBy }) => {
+const FilterByPostMenu = ({ sortedBy, setShowSearchBox }) => {
   return (
     <div className="w-full flex justify-between items-center">
       <div className="flex-grow max-w-[350px] py-1 flex justify-around items-center bg-slate-300 rounded-full">
@@ -46,15 +47,22 @@ const FilterByPostMenu = ({ sortedBy }) => {
           sortedBy={sortedBy}
         />
       </div>
-      <Icon path={mdiMagnify} size={1.2} />
+      <button
+        className="p-2 rounded-xl transition hover:bg-slate-400 active:scale-95 "
+        onClick={() => setShowSearchBox(true)}
+      >
+        <Icon path={mdiMagnify} size={1.2} className="fill-current" />
+      </button>
     </div>
   );
 };
+FilterByPostMenu.displayName = "FilterByPostMenu";
 
 const Archive = () => {
+  const [showSearchBox, setShowSearchBox] = useState(false);
   const [sortedBy, setSortedBy] = useState("createdAt");
   const [searchParams, setSearchParams] = useSearchParams();
-  const { posts, loading } = useFetchPosts(searchParams.get("sort"));
+  const { posts, loading } = useFetchPosts("", searchParams.get("sort"));
   console.log("Archive Posts", posts);
   console.log("Sorted by:", sortedBy);
 
@@ -66,10 +74,14 @@ const Archive = () => {
 
   return (
     <div className="w-full max-w-[800px] mt-52">
-      <FilterByPostMenu sortedBy={sortedBy} />
+      <FilterByPostMenu
+        sortedBy={sortedBy}
+        setShowSearchBox={setShowSearchBox}
+      />
       {posts.map((post) => (
         <Item key={post.id} post={post} />
       ))}
+      {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox} />}
     </div>
   );
 };

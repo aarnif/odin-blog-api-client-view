@@ -1,17 +1,17 @@
 import blogService from "../services/blogService";
 import { useState, useEffect } from "react";
 
-const useFetchPosts = (sortBy) => {
+const useFetchPosts = (searchBy, sortBy) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    blogService.getAllPosts(sortBy).then((posts) => {
+    blogService.getAllPosts(searchBy, sortBy).then((posts) => {
       console.log("Setting posts in useFetchPosts:");
       setPosts(posts);
       setLoading(false);
     });
-  }, [sortBy]);
+  }, [searchBy, sortBy]);
 
   return { posts, loading };
 };
