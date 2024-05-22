@@ -91,7 +91,7 @@ const Comments = ({ comments }) => {
   }
 
   return (
-    <div className="w-full">
+    <div id="comments-section" className="w-full">
       <h1 className="mt-4 mb-8 text-2xl text-slate-700 font-bold">
         {postComments.length} Comments
       </h1>

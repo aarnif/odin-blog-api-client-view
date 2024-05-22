@@ -5,6 +5,7 @@ import Archive from "./components/Archive/index.jsx";
 import About from "./components/About.jsx";
 import Footer from "./components/Footer/index.jsx";
 import SinglePostView from "./components/Home/BlogPost/SinglePostView.jsx";
+import ScrollToHashElement from "./ScrollToHashElement.jsx";
 
 import { Routes, Route, useMatch } from "react-router-dom";
 
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <ScrollToHashElement />
       <div className="w-full min-h-screen flex flex-col justify-start items-center">
         <Routes>
           <Route path="/" element={<Home posts={posts} />} />

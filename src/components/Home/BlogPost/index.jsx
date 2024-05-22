@@ -10,8 +10,10 @@ const BlogPost = ({ post }) => {
       key={post.id}
       className="w-full flex flex-col justify-center items-start mb-8"
     >
-      <Link to={`/posts/${post.id}`}>
-        <h1 className="text-3xl font-bold">{post.title}</h1>
+      <Link to={`/posts/${post.id}#post-title`}>
+        <h1 id="post-title" className="text-3xl font-bold">
+          {post.title}
+        </h1>
       </Link>
       <h2 className="mt-4 text-xl text-slate-500">{post.lead}</h2>
 
