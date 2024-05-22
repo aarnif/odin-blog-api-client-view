@@ -2,11 +2,13 @@ import LinkItem from "./LinkItem";
 
 import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 import { useState } from "react";
+import Icon from "@mdi/react";
+import { mdiMagnify } from "@mdi/js";
 
-const Header = () => {
+const Header = ({ setShowSearchBox }) => {
   const { scrollY, scrollYProgress } = useScroll();
   const [showHeader, setShowHeader] = useState(0);
-  const headerHeightInPixels = 130;
+  const headerHeightInPixels = 120;
   const headerBuffer = 5;
   const headerScrollAmount = 10;
 
@@ -41,10 +43,25 @@ const Header = () => {
         translateY: showHeader,
       }}
     >
-      <div className="w-full flex-grow basis-3/5 flex justify-center items-center border-b border-b-slate-300">
-        <h1 className="w-full text-center font-title text-2xl font-bold">
+      <div className="w-full flex-grow basis-3/5 flex justify-around items-center border-b border-b-slate-300">
+        <div
+          className="ml-8 w-12 h-12 bg-slate-300 rounded-xl"
+          style={{
+            backgroundImage: "url(images/page-banner.png)",
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+        <h1 className="flex-grow text-center font-title text-2xl font-bold">
           Tech Visionary
         </h1>
+        <button
+          className="mr-8 w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 transition hover:bg-slate-400 active:scale-95"
+          onClick={() => setShowSearchBox(true)}
+        >
+          <Icon path={mdiMagnify} size={1.2} className="fill-current" />
+        </button>
       </div>
       <div className="w-full flex-grow basis-2/5 flex justify-center items-center border-b border-b-slate-300">
         <nav className="max-w-[260px] flex-grow h-full flex justify-center items-center">

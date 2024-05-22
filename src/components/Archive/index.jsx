@@ -1,6 +1,5 @@
 import Item from "./Item";
 import useFetchPosts from "../../hooks/useFetchPosts";
-import SearchBox from "../SearchBox";
 
 import { useEffect, useState, useRef, forwardRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -58,8 +57,7 @@ const FilterByPostMenu = ({ sortedBy, setShowSearchBox }) => {
 };
 FilterByPostMenu.displayName = "FilterByPostMenu";
 
-const Archive = () => {
-  const [showSearchBox, setShowSearchBox] = useState(false);
+const Archive = ({ setShowSearchBox }) => {
   const [sortedBy, setSortedBy] = useState("createdAt");
   const [searchParams, setSearchParams] = useSearchParams();
   const { posts, loading } = useFetchPosts("", searchParams.get("sort"));
@@ -81,7 +79,6 @@ const Archive = () => {
       {posts.map((post) => (
         <Item key={post.id} post={post} />
       ))}
-      {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox} />}
     </div>
   );
 };

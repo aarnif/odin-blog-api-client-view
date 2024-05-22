@@ -6,9 +6,12 @@ import Icon from "@mdi/react";
 import { mdiMagnify } from "@mdi/js";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SearchItem = ({ post }) => {
+const SearchItem = ({ post, setShowSearchBox }) => {
   return (
-    <div className="flex justify-start items-center cursor-pointer hover:bg-slate-300 transition">
+    <button
+      className="flex justify-start items-center cursor-pointer hover:bg-slate-300 transition"
+      onClick={() => setShowSearchBox(false)}
+    >
       <Link
         to={`/posts/${post.id}`}
         className="flex justify-start items-center"
@@ -19,7 +22,7 @@ const SearchItem = ({ post }) => {
           <p className="text-slate-400">{post.lead}</p>
         </div>
       </Link>
-    </div>
+    </button>
   );
 };
 
@@ -67,7 +70,11 @@ const SearchBox = ({ setShowSearchBox }) => {
           <h3 className="p-4 text-slate-500 font-semibold">POSTS</h3>
           <div>
             {posts.map((post) => (
-              <SearchItem key={post.id} post={post} />
+              <SearchItem
+                key={post.id}
+                post={post}
+                setShowSearchBox={setShowSearchBox}
+              />
             ))}
           </div>
         </div>
