@@ -14,7 +14,7 @@ import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const match = useMatch("/posts/:id");
-  const { posts, loading } = useFetchPosts();
+  const { posts, setPosts, loading } = useFetchPosts();
   const [showSearchBox, setShowSearchBox] = useState(false);
 
   const post = match ? posts.find((post) => post.id === match.params.id) : null;
@@ -31,7 +31,10 @@ const App = () => {
       <ScrollToHashElement />
       <div className="w-full min-h-screen flex flex-col justify-start items-center">
         <Routes>
-          <Route path="/" element={<Home posts={posts} />} />
+          <Route
+            path="/"
+            element={<Home posts={posts} setPosts={setPosts} />}
+          />
           <Route
             path="/archive"
             element={<Archive setShowSearchBox={setShowSearchBox} />}
@@ -49,7 +52,10 @@ const App = () => {
             element={<Archive setShowSearchBox={setShowSearchBox} />}
           />
           <Route path="/about" element={<About />} />
-          <Route path="/posts/:id" element={<SinglePostView post={post} />} />
+          <Route
+            path="/posts/:id"
+            element={<SinglePostView post={post} setPosts={setPosts} />}
+          />
         </Routes>
       </div>
       <AnimatePresence>

@@ -13,7 +13,7 @@ const useFetchPosts = (searchBy, sortBy) => {
     });
   }, [searchBy, sortBy]);
 
-  return { posts, loading };
+  return { posts, setPosts, loading };
 };
 
 export default useFetchPosts;

@@ -16,4 +16,9 @@ const addComment = async (postId, newComment) => {
   return response.data;
 };
 
-export default { getAllPosts, addComment };
+const likePost = async (postId) => {
+  const response = await axios.put(`${baseUrl}/posts/${postId}/like`);
+  return response.data;
+};
+
+export default { getAllPosts, addComment, likePost };

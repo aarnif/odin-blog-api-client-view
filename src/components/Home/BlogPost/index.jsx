@@ -3,7 +3,7 @@ import Comments from "./Comments";
 import { Link } from "react-router-dom";
 import { useMatch } from "react-router-dom";
 
-const BlogPost = ({ post }) => {
+const BlogPost = ({ post, setPosts }) => {
   const match = useMatch("/posts/:id");
   return (
     <div
@@ -34,7 +34,7 @@ const BlogPost = ({ post }) => {
         </div>
       </div>
 
-      <Icons post={post} />
+      <Icons post={post} setPosts={setPosts} />
 
       <div
         style={{

@@ -1,9 +1,9 @@
 import BlogPost from "./index.jsx";
 
-const SinglePostView = ({ post }) => {
+const SinglePostView = ({ post, setPosts }) => {
   return (
     <div className="w-full max-w-[800px] mt-40">
-      <BlogPost post={post} />
+      <BlogPost post={post} setPosts={setPosts} />
     </div>
   );
 };
