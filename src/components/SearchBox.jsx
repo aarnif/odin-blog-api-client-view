@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiMagnify } from "@mdi/js";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const SearchItem = ({ post, setShowSearchBox }) => {
   return (
@@ -42,7 +42,7 @@ const SearchBox = ({ setShowSearchBox }) => {
       onClick={() => setShowSearchBox(false)}
       initial={{ width: "0vw", opacity: 0 }}
       animate={{ width: "100vw", opacity: 1, duration: 1.0 }}
-      exit={{ width: "0vw", opacity: 0, transition: { delay: 0.5 } }}
+      exit={{ width: "0vw", opacity: 0, transition: { delay: 1.0 } }}
     >
       <motion.div
         key={"searchBox"}
@@ -50,6 +50,7 @@ const SearchBox = ({ setShowSearchBox }) => {
         onClick={(e) => e.stopPropagation()}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, duration: 0.4 }}
+        exit={{ y: -50, opacity: 0 }}
         transition={{ delay: 0.4, type: "tween" }}
       >
         <div className="w-full overflow-hidden border-b border-b-slate-300">

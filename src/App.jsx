@@ -10,6 +10,7 @@ import SearchBox from "./components/SearchBox.jsx";
 
 import { useState } from "react";
 import { Routes, Route, useMatch } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const match = useMatch("/posts/:id");
@@ -51,7 +52,9 @@ const App = () => {
           <Route path="/posts/:id" element={<SinglePostView post={post} />} />
         </Routes>
       </div>
-      {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox} />}
+      <AnimatePresence>
+        {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox} />}
+      </AnimatePresence>
       <Footer />
     </>
   );
