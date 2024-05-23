@@ -29,7 +29,7 @@ const Comment = ({ comment }) => {
   );
 };
 
-const AddComment = ({ setPostComments }) => {
+const AddComment = ({ setPosts }) => {
   const postId = useMatch("/posts/:id").params.id;
 
   const handleSubmitNewComment = (event) => {
@@ -40,7 +40,13 @@ const AddComment = ({ setPostComments }) => {
       content: event.target.comment.value,
     };
     blogService.addComment(postId, newComment).then((comment) => {
-      setPostComments((prevComments) => [...prevComments, comment]);
+      setPosts((prevPosts) => {
+        return prevPosts.map((post) =>
+          post.id === postId
+            ? { ...post, comments: [...post.comments, comment] }
+            : post
+        );
+      });
     });
     event.target.reset();
   };
@@ -76,16 +82,15 @@ const AddComment = ({ setPostComments }) => {
   );
 };
 
-const Comments = ({ comments }) => {
-  const [postComments, setPostComments] = useState(comments);
-  console.log("Comments:", postComments);
+const Comments = ({ posts, setPosts }) => {
+  const postComments = posts.comments;
   if (!postComments.length) {
     return (
       <div className="w-full">
         <h1 className="mt-4 mb-8 text-2xl text-slate-700 font-bold">
           No comments.
         </h1>
-        <AddComment setPostComments={setPostComments} />
+        <AddComment setPosts={setPosts} />
       </div>
     );
   }
@@ -95,7 +100,7 @@ const Comments = ({ comments }) => {
       <h1 className="mt-4 mb-8 text-2xl text-slate-700 font-bold">
         {postComments.length} Comments
       </h1>
-      <AddComment setPostComments={setPostComments} />
+      <AddComment setPosts={setPosts} />
       {postComments.map((comment, index) => (
         <Comment key={index} comment={comment} />
       ))}

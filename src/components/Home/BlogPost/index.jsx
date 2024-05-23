@@ -52,7 +52,7 @@ const BlogPost = ({ post, setPosts }) => {
       </div>
 
       <Icons post={post} />
-      {match && <Comments comments={post.comments} />}
+      {match && <Comments posts={post} setPosts={setPosts} />}
     </div>
   );
 };
