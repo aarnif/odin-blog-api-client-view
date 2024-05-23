@@ -1,10 +1,23 @@
 import Icons from "./Icons";
 import Comments from "./Comments";
+import ShareDropDown from "./ShareDropDown.jsx";
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMatch } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
-const BlogPost = ({ post, setPosts }) => {
+const BlogPost = ({ post, setPosts, showDropdown, setShowDropdown }) => {
   const match = useMatch("/posts/:id");
+  const [postId, setPostId] = useState(null);
+
+  const handleClickShare = (event) => {
+    event.stopPropagation();
+    console.log(`Share post ${event.target.id}`);
+    setPostId(event.target.id);
+    setShowDropdown(true);
+  };
+
   return (
     <div
       key={post.id}
@@ -34,7 +47,11 @@ const BlogPost = ({ post, setPosts }) => {
         </div>
       </div>
 
-      <Icons post={post} setPosts={setPosts} />
+      <Icons
+        post={post}
+        setPosts={setPosts}
+        handleClickShare={handleClickShare}
+      />
 
       <div
         style={{
@@ -51,8 +68,18 @@ const BlogPost = ({ post, setPosts }) => {
         ))}
       </div>
 
-      <Icons post={post} />
+      <Icons
+        post={post}
+        setPosts={setPosts}
+        handleClickShare={handleClickShare}
+      />
+
       {match && <Comments posts={post} setPosts={setPosts} />}
+      <AnimatePresence>
+        {showDropdown && postId && (
+          <ShareDropDown setShowDropdown={setShowDropdown} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

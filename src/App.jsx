@@ -16,6 +16,12 @@ const App = () => {
   const match = useMatch("/posts/:id");
   const { posts, setPosts, loading } = useFetchPosts();
   const [showSearchBox, setShowSearchBox] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleCloseDropdown = (event) => {
+    console.log("Close share dropdown-menu");
+    setShowDropdown(false);
+  };
 
   const post = match ? posts.find((post) => post.id === match.params.id) : null;
 
@@ -26,14 +32,21 @@ const App = () => {
   }
 
   return (
-    <>
+    <div onClick={handleCloseDropdown}>
       <Header setShowSearchBox={setShowSearchBox} />
       <ScrollToHashElement />
       <div className="w-full min-h-screen flex flex-col justify-start items-center">
         <Routes>
           <Route
             path="/"
-            element={<Home posts={posts} setPosts={setPosts} />}
+            element={
+              <Home
+                posts={posts}
+                setPosts={setPosts}
+                showDropdown={showDropdown}
+                setShowDropdown={setShowDropdown}
+              />
+            }
           />
           <Route
             path="/archive"
@@ -62,7 +75,7 @@ const App = () => {
         {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox} />}
       </AnimatePresence>
       <Footer />
-    </>
+    </div>
   );
 };
 
