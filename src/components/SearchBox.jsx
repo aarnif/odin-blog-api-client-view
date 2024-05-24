@@ -1,3 +1,4 @@
+import baseUrl from "../baseUrl";
 import useFetchPosts from "../hooks/useFetchPosts";
 import { Link } from "react-router-dom";
 
@@ -17,7 +18,14 @@ const SearchItem = ({ post, setShowSearchBox }) => {
         to={`/posts/${post.id}`}
         className="flex justify-start items-center"
       >
-        <div className="m-4 mr-0 w-12 h-12 rounded-xl bg-slate-300"></div>
+        <div
+          className="m-4 mr-0 w-12 h-12 rounded-xl bg-slate-300"
+          style={{
+            backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
         <div className="p-4">
           <h4 className="text-slate-500 font-semibold dark:text-white">
             {post.title}

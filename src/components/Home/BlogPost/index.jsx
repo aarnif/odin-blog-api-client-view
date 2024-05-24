@@ -1,3 +1,4 @@
+import baseUrl from "../../../baseUrl";
 import Icons from "./Icons";
 import Comments from "./Comments";
 
@@ -35,9 +36,7 @@ const BlogPost = ({
       <div className="w-full flex justify-start items-center mt-4 pb-4">
         <div
           style={{
-            backgroundImage: post.profilePic.length
-              ? `url(${post.profilePic})`
-              : "none",
+            backgroundImage: `url(${baseUrl}/authors/${post.author.id}/image)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -45,7 +44,7 @@ const BlogPost = ({
         ></div>
         <div>
           <div className="text-slate-700 dark:text-slate-300">
-            {post.author}
+            {post.author.name}
           </div>
           <div className="text-slate-500 dark:text-slate-400">
             {post.createdAt}
@@ -67,14 +66,14 @@ const BlogPost = ({
 
       <div
         style={{
-          backgroundImage: post.image.length ? `url(${post.image})` : "none",
+          backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
         className="w-full h-[500px] rounded-lg bg-slate-500"
       ></div>
 
-      <div className="mt-4 text-lg text-slate-700">
+      <div className="mt-4 text-lg text-slate-700 dark:text-slate-200">
         {post.content.map((paragraph) => (
           <p className="mb-4">{paragraph}</p>
         ))}

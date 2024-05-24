@@ -1,3 +1,5 @@
+import baseUrl from "../../baseUrl";
+
 import { Link } from "react-router-dom";
 
 const Item = ({ post }) => {
@@ -13,10 +15,17 @@ const Item = ({ post }) => {
         <div className="mt-2 flex justify-start text-slate-500 dark:text-slate-300">
           <div className="mr-1">{post.createdAt}</div>
           <div className="mr-1">•</div>
-          <div className="mr-1">{post.author.toUpperCase()}</div>
+          <div className="mr-1">{post.author.name.toUpperCase()}</div>
         </div>
       </div>
-      <div className="w-60 h-40 bg-slate-300"></div>
+      <div
+        className="w-60 h-40 bg-slate-300"
+        style={{
+          backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
     </div>
   );
 };
