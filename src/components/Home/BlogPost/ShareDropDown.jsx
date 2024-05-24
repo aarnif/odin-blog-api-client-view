@@ -12,68 +12,59 @@ import { motion } from "framer-motion";
 const ShareDropDown = ({ setShowDropdown }) => {
   return (
     <motion.div
-      key={"Overlay"}
-      className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-10 transition"
-      onClick={() => setShowDropdown(false)}
-      initial={{ width: "0vw", opacity: 0 }}
-      animate={{ width: "100vw", opacity: 1, duration: 1.0 }}
-      exit={{ width: "0vw", opacity: 0, transition: { delay: 1.0 } }}
+      key={"shareDropdownMenu"}
+      className="z-10 absolute top-16 right-0 w-[250px] bg-white border border-slate-300 rounded-lg shadow-xl text-lg text-slate-700 font-subtitle"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, duration: 0.4 }}
+      exit={{ y: -50, opacity: 0 }}
+      transition={{ delay: 0.4, type: "tween" }}
     >
-      <motion.div
-        key={"searchBox"}
-        className="w-[250px] bg-white border border-slate-300 rounded-lg shadow-xl text-lg text-slate-700 font-subtitle"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, duration: 0.4 }}
-        exit={{ y: -50, opacity: 0 }}
-        transition={{ delay: 0.4, type: "tween" }}
-      >
-        <ul className="p-4 flex flex-col justify-center items-center">
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <Icon path={mdiLinkVariant} className="w-8" />
-            <div className="ml-2">Copy link</div>
-          </li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <FontAwesomeIcon icon={faPaperPlane} size={"xl"} className="w-8" />
-            <div className="ml-2">Send as message</div>
-          </li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300">
-            <div className="flex items-center ml-[-6px]">
-              <Icon path={mdiChevronLeft} className="w-8" />
-              <Icon path={mdiChevronRight} className="w-8 ml-[-18px]" />
-            </div>
-            <div className="ml-2">Embed</div>
-          </li>
-          <li className="w-[95%] my-2 border-b border-b-slate-300"></li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <FontAwesomeIcon
-              icon={faBook}
-              size={"xl"}
-              className="w-8 fill-current text-orange-600"
-            />
-            <div className="ml-2">Share to Notes</div>
-          </li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <FontAwesomeIcon
-              icon={faFacebook}
-              size={"xl"}
-              className="w-8 fill-current text-blue-600"
-            />
-            <div className="ml-2">Share to Facebook</div>
-          </li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <FontAwesomeIcon
-              icon={faLinkedin}
-              size={"xl"}
-              className="w-8 fill-current text-blue-700"
-            />
-            <div className="ml-2">Share to LinkedIn</div>
-          </li>
-          <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
-            <FontAwesomeIcon icon={faXTwitter} size={"xl"} className="w-8" />
-            <div className="ml-2">Share to X</div>
-          </li>
-        </ul>
-      </motion.div>
+      <ul className="p-4 flex flex-col justify-center items-center">
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <Icon path={mdiLinkVariant} className="w-8" />
+          <div className="ml-2">Copy link</div>
+        </li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <FontAwesomeIcon icon={faPaperPlane} size={"xl"} className="w-8" />
+          <div className="ml-2">Send as message</div>
+        </li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300">
+          <div className="flex items-center ml-[-6px]">
+            <Icon path={mdiChevronLeft} className="w-8" />
+            <Icon path={mdiChevronRight} className="w-8 ml-[-18px]" />
+          </div>
+          <div className="ml-2">Embed</div>
+        </li>
+        <li className="w-[95%] my-2 border-b border-b-slate-300"></li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <FontAwesomeIcon
+            icon={faBook}
+            size={"xl"}
+            className="w-8 fill-current text-orange-600"
+          />
+          <div className="ml-2">Share to Notes</div>
+        </li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <FontAwesomeIcon
+            icon={faFacebook}
+            size={"xl"}
+            className="w-8 fill-current text-blue-600"
+          />
+          <div className="ml-2">Share to Facebook</div>
+        </li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <FontAwesomeIcon
+            icon={faLinkedin}
+            size={"xl"}
+            className="w-8 fill-current text-blue-700"
+          />
+          <div className="ml-2">Share to LinkedIn</div>
+        </li>
+        <li className="w-full p-2 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 active:scale-95 transition">
+          <FontAwesomeIcon icon={faXTwitter} size={"xl"} className="w-8" />
+          <div className="ml-2">Share to X</div>
+        </li>
+      </ul>
     </motion.div>
   );
 };

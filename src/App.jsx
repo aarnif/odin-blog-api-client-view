@@ -17,10 +17,12 @@ const App = () => {
   const { posts, setPosts, loading } = useFetchPosts();
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [iconId, setIconId] = useState(null);
 
   const handleCloseDropdown = (event) => {
     console.log("Close share dropdown-menu");
     setShowDropdown(false);
+    setIconId(null);
   };
 
   const post = match ? posts.find((post) => post.id === match.params.id) : null;
@@ -45,6 +47,8 @@ const App = () => {
                 setPosts={setPosts}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
+                iconId={iconId}
+                setIconId={setIconId}
               />
             }
           />

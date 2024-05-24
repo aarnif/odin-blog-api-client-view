@@ -1,22 +1,22 @@
 import Icons from "./Icons";
 import Comments from "./Comments";
-import ShareDropDown from "./ShareDropDown.jsx";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMatch } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 
-const BlogPost = ({ post, setPosts, showDropdown, setShowDropdown }) => {
+const BlogPost = ({
+  iconsIndexOne,
+  iconsIndexTwo,
+  post,
+  setPosts,
+  showDropdown,
+  setShowDropdown,
+  iconId,
+  setIconId,
+}) => {
   const match = useMatch("/posts/:id");
   const [postId, setPostId] = useState(null);
-
-  const handleClickShare = (event) => {
-    event.stopPropagation();
-    console.log(`Share post ${event.target.id}`);
-    setPostId(event.target.id);
-    setShowDropdown(true);
-  };
 
   return (
     <div
@@ -48,9 +48,15 @@ const BlogPost = ({ post, setPosts, showDropdown, setShowDropdown }) => {
       </div>
 
       <Icons
+        iconId={iconsIndexOne}
         post={post}
         setPosts={setPosts}
-        handleClickShare={handleClickShare}
+        showDropdown={
+          showDropdown && postId === post.id && iconId === iconsIndexOne
+        }
+        setShowDropdown={setShowDropdown}
+        setPostId={setPostId}
+        setIconId={setIconId}
       />
 
       <div
@@ -69,17 +75,18 @@ const BlogPost = ({ post, setPosts, showDropdown, setShowDropdown }) => {
       </div>
 
       <Icons
+        iconId={iconsIndexTwo}
         post={post}
         setPosts={setPosts}
-        handleClickShare={handleClickShare}
+        showDropdown={
+          showDropdown && postId === post.id && iconId === iconsIndexTwo
+        }
+        setShowDropdown={setShowDropdown}
+        setPostId={setPostId}
+        setIconId={setIconId}
       />
 
       {match && <Comments posts={post} setPosts={setPosts} />}
-      <AnimatePresence>
-        {showDropdown && postId && (
-          <ShareDropDown setShowDropdown={setShowDropdown} />
-        )}
-      </AnimatePresence>
     </div>
   );
 };

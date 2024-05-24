@@ -1,10 +1,21 @@
 import blogService from "../../../services/blogService";
+import ShareDropDown from "./ShareDropDown";
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiChatOutline, mdiHeartOutline } from "@mdi/js";
+import { AnimatePresence } from "framer-motion";
 
-const Icons = ({ post, setPosts, handleClickShare }) => {
+const Icons = ({
+  iconId,
+  post,
+  setPosts,
+  showDropdown,
+  setShowDropdown,
+  setPostId,
+  setIconId,
+}) => {
   const navigate = useNavigate();
 
   const handleLikePost = () => {
@@ -16,6 +27,15 @@ const Icons = ({ post, setPosts, handleClickShare }) => {
         )
       );
     });
+  };
+
+  const handleClickShare = (event) => {
+    event.stopPropagation();
+    console.log(`Share post ${event.target.id}`);
+    console.log(`Icon ID: ${event.target.getAttribute("data-icon-id")}`);
+    setPostId(event.target.id);
+    setIconId(Number(event.target.getAttribute("data-icon-id")));
+    setShowDropdown(true);
   };
 
   return (
@@ -52,11 +72,15 @@ const Icons = ({ post, setPosts, handleClickShare }) => {
       <div className="relative w-24 h-14 mr-4 flex justify-around items-center">
         <button
           id={post.id}
+          data-icon-id={iconId}
           className="w-full h-full flex justify-around items-center border border-slate-500 rounded-full  text-lg hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition"
           onClick={handleClickShare}
         >
           Share
         </button>
+        <AnimatePresence>
+          {showDropdown && <ShareDropDown setShowDropdown={setShowDropdown} />}
+        </AnimatePresence>
       </div>
     </div>
   );
