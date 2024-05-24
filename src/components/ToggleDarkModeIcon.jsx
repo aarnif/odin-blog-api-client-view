@@ -19,7 +19,8 @@ const ToggleDarkModeIcon = () => {
       <button
         key="toggle-dark-mode"
         onClick={toggleDarkMode}
-        className="w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 hover:bg-slate-400 active:scale-95 transition"
+        className="w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 hover:bg-slate-400 active:scale-95 transition
+        dark:bg-slate-900 hover:dark:bg-slate-600"
       >
         {darkMode ? (
           <Icon path={mdiWeatherNight} size={iconSize} />

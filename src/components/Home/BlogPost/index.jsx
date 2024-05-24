@@ -28,7 +28,9 @@ const BlogPost = ({
           {post.title}
         </h1>
       </Link>
-      <h2 className="mt-4 text-xl text-slate-500">{post.lead}</h2>
+      <h2 className="mt-4 text-xl text-slate-500 dark:text-slate-200">
+        {post.lead}
+      </h2>
 
       <div className="w-full flex justify-start items-center mt-4 pb-4">
         <div
@@ -42,8 +44,12 @@ const BlogPost = ({
           className="w-14 h-14 mr-4 rounded-full bg-slate-500"
         ></div>
         <div>
-          <div className="text-slate-700">{post.author}</div>
-          <div className="text-slate-500">{post.createdAt}</div>
+          <div className="text-slate-700 dark:text-slate-300">
+            {post.author}
+          </div>
+          <div className="text-slate-500 dark:text-slate-400">
+            {post.createdAt}
+          </div>
         </div>
       </div>
 

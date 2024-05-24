@@ -7,8 +7,10 @@ const Item = ({ post }) => {
         <Link to={`/posts/${post.id}`}>
           <h2 className="text-2xl font-bold">{post.title}</h2>
         </Link>
-        <h3 className="mt-2 text-xl text-slate-600">{post.lead}</h3>
-        <div className="mt-2 flex justify-start text-slate-500">
+        <h3 className="mt-2 text-xl text-slate-600 dark:text-slate-300">
+          {post.lead}
+        </h3>
+        <div className="mt-2 flex justify-start text-slate-500 dark:text-slate-300">
           <div className="mr-1">{post.createdAt}</div>
           <div className="mr-1">•</div>
           <div className="mr-1">{post.author.toUpperCase()}</div>

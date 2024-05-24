@@ -9,7 +9,8 @@ import { motion } from "framer-motion";
 const SearchItem = ({ post, setShowSearchBox }) => {
   return (
     <button
-      className="flex justify-start items-center cursor-pointer hover:bg-slate-300 transition"
+      className="w-full flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 transition
+      dark:hover:bg-slate-600 dark:text-white"
       onClick={() => setShowSearchBox(false)}
     >
       <Link
@@ -18,8 +19,10 @@ const SearchItem = ({ post, setShowSearchBox }) => {
       >
         <div className="m-4 mr-0 w-12 h-12 rounded-xl bg-slate-300"></div>
         <div className="p-4">
-          <h4 className="text-slate-500 font-semibold">{post.title}</h4>
-          <p className="text-slate-400">{post.lead}</p>
+          <h4 className="text-slate-500 font-semibold dark:text-white">
+            {post.title}
+          </h4>
+          <p className="text-slate-400 dark:text-slate-300">{post.lead}</p>
         </div>
       </Link>
     </button>
@@ -46,7 +49,7 @@ const SearchBox = ({ setShowSearchBox }) => {
     >
       <motion.div
         key={"searchBox"}
-        className="w-[450px] h-[600px] bg-white rounded-xl text-slate-700 z-100"
+        className="w-[450px] h-[600px] bg-white rounded-xl text-slate-700 z-100 dark:bg-slate-700 dark:text-white"
         onClick={(e) => e.stopPropagation()}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, duration: 0.4 }}
@@ -59,7 +62,8 @@ const SearchBox = ({ setShowSearchBox }) => {
             <input
               onChange={handleChange}
               className="flex-grow mx-4 rounded-lg p-2 
-              hover:bg-slate-100 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:bg-slate-100 placeholder:text-slate-500 transition"
+              hover:bg-slate-100 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:bg-slate-100 placeholder:text-slate-500 transition
+              dark:bg-slate-600 hover:dark:bg-slate-500 focus:dark:bg-slate-500 dark:placeholder-white"
               name="search-posts"
               id="search-posts"
               type="text"
@@ -68,7 +72,9 @@ const SearchBox = ({ setShowSearchBox }) => {
           </div>
         </div>
         <div>
-          <h3 className="p-4 text-slate-500 font-semibold">POSTS</h3>
+          <h3 className="p-4 text-slate-500 font-semibold dark:text-white">
+            POSTS
+          </h3>
           <div>
             {posts.map((post) => (
               <SearchItem

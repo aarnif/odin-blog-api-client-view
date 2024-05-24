@@ -38,7 +38,7 @@ const Header = ({ setShowSearchBox }) => {
 
   return (
     <motion.header
-      className="fixed w-full flex flex-col justify-center items-center shadow-lg z-10 bg-white transition"
+      className="z-10 fixed w-full flex flex-col justify-center items-center shadow-lg bg-white dark:bg-slate-800 dark:text-slate-200 transition"
       style={{
         height: headerHeightInPixels,
         translateY: showHeader,
@@ -63,7 +63,8 @@ const Header = ({ setShowSearchBox }) => {
           <ToggleDarkModeIcon />
           <li>
             <button
-              className="mr-8 w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 transition hover:bg-slate-400 active:scale-95"
+              className="mr-8 w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 transition hover:bg-slate-400 active:scale-95
+              dark:bg-slate-900 hover:dark:bg-slate-600"
               onClick={() => setShowSearchBox(true)}
             >
               <Icon path={mdiMagnify} size={1.2} className="fill-current" />

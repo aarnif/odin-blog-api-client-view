@@ -1,7 +1,6 @@
 import blogService from "../../../services/blogService";
 import ShareDropDown from "./ShareDropDown";
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiChatOutline, mdiHeartOutline } from "@mdi/js";
@@ -39,11 +38,15 @@ const Icons = ({
   };
 
   return (
-    <div className="w-full flex justify-between items-center mb-4 py-4 border-t border-b text-slate-500">
+    <div
+      className="w-full flex justify-between items-center mb-4 py-4 border-t border-b text-slate-500 
+   dark:text-slate-200"
+    >
       <div className="flex justify-start items-center">
         <div
           className="w-24 h-14 mr-4 flex justify-around items-center border border-slate-500 rounded-full        
-         hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition"
+         hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition
+         dark:border-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:text-slate-300"
         >
           <button
             className="w-full h-full flex justify-around items-center"
@@ -55,7 +58,8 @@ const Icons = ({
         </div>
         <div
           className="w-24 h-14 mr-4 flex justify-around items-center border border-slate-500 rounded-full        
-         hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition"
+          hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition
+          dark:border-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:text-slate-300"
         >
           <button
             onClick={() => {
@@ -73,7 +77,9 @@ const Icons = ({
         <button
           id={post.id}
           data-icon-id={iconId}
-          className="w-full h-full flex justify-around items-center border border-slate-500 rounded-full  text-lg hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition"
+          className="w-full h-full flex justify-around items-center border border-slate-500 rounded-full text-lg
+           hover:bg-slate-300 hover:text-slate-100 hover:cursor-pointer active:scale-95 transition
+           dark:border-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:text-slate-300"
           onClick={handleClickShare}
         >
           Share

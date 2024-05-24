@@ -9,7 +9,8 @@ import { mdiMagnify } from "@mdi/js";
 const FilterByButton = ({ to, name, text, sortedBy }) => {
   return (
     <button
-      className="w-24 h-14 m-1 flex justify-center items-center text-slate-500 rounded-full hover:bg-slate-400 transition"
+      className="w-24 h-14 m-1 flex justify-center items-center text-slate-500 rounded-full hover:bg-slate-400 transition
+      dark:text-slate-200 dark:hover:bg-slate-700"
       style={{
         // Add differen styles for the button when it is selected
         backgroundColor: sortedBy === name && "white",
@@ -26,7 +27,10 @@ const FilterByButton = ({ to, name, text, sortedBy }) => {
 const FilterByPostMenu = ({ sortedBy, setShowSearchBox }) => {
   return (
     <div className="w-full flex justify-between items-center">
-      <div className="flex-grow max-w-[350px] py-1 flex justify-around items-center bg-slate-300 rounded-full">
+      <div
+        className="flex-grow max-w-[350px] py-1 flex justify-around items-center bg-slate-300 rounded-full
+      dark:bg-slate-800"
+      >
         <FilterByButton
           to="/archive?sort=createdAt"
           name="createdAt"

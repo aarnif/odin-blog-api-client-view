@@ -19,7 +19,7 @@
 
 @layer base {
   body {
-    @apply m-0 box-border font-body;
+    @apply m-0 box-border font-body dark:bg-slate-700 dark:text-white;
   }
   h1 {
     @apply font-title;
