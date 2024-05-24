@@ -1,4 +1,5 @@
 import LinkItem from "./LinkItem";
+import ToggleDarkModeIcon from "../ToggleDarkModeIcon";
 
 import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 import { useState } from "react";
@@ -37,31 +38,38 @@ const Header = ({ setShowSearchBox }) => {
 
   return (
     <motion.header
-      className="fixed w-full flex flex-col justify-center items-center shadow-lg z-10 bg-white"
+      className="fixed w-full flex flex-col justify-center items-center shadow-lg z-10 bg-white transition"
       style={{
         height: headerHeightInPixels,
         translateY: showHeader,
       }}
     >
       <div className="w-full flex-grow basis-3/5 flex justify-around items-center border-b border-b-slate-300">
-        <div
-          className="ml-8 w-12 h-12 bg-slate-300 rounded-xl"
-          style={{
-            backgroundImage: "url(images/page-banner.png)",
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+        <div className="w-[160px]">
+          <div
+            className="ml-8 w-12 h-12 bg-slate-300 rounded-xl"
+            style={{
+              backgroundImage: "url(images/page-banner.png)",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
+        </div>
         <h1 className="flex-grow text-center font-title text-2xl font-bold">
           Tech Visionary
         </h1>
-        <button
-          className="mr-8 w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 transition hover:bg-slate-400 active:scale-95"
-          onClick={() => setShowSearchBox(true)}
-        >
-          <Icon path={mdiMagnify} size={1.2} className="fill-current" />
-        </button>
+        <ul className="w-[160px] flex">
+          <ToggleDarkModeIcon />
+          <li>
+            <button
+              className="mr-8 w-12 h-12 flex justify-center items-center rounded-xl bg-slate-300 transition hover:bg-slate-400 active:scale-95"
+              onClick={() => setShowSearchBox(true)}
+            >
+              <Icon path={mdiMagnify} size={1.2} className="fill-current" />
+            </button>
+          </li>
+        </ul>
       </div>
       <div className="w-full flex-grow basis-2/5 flex justify-center items-center border-b border-b-slate-300">
         <nav className="max-w-[260px] flex-grow h-full flex justify-center items-center">
