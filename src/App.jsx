@@ -71,7 +71,16 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route
             path="/posts/:id"
-            element={<SinglePostView post={post} setPosts={setPosts} />}
+            element={
+              <SinglePostView
+                post={post}
+                setPosts={setPosts}
+                showDropdown={showDropdown}
+                setShowDropdown={setShowDropdown}
+                iconId={iconId}
+                setIconId={setIconId}
+              />
+            }
           />
         </Routes>
       </div>
