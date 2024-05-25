@@ -1,5 +1,6 @@
 import baseUrl from "../../../baseUrl";
 import Icons from "./Icons";
+import CommentersView from "./CommentersView";
 import Comments from "./Comments";
 
 import { useState } from "react";
@@ -79,6 +80,9 @@ const BlogPost = ({
         ))}
       </div>
 
+      {post.comments.length > 0 && (
+        <CommentersView postId={post.id} comments={post.comments} />
+      )}
       <Icons
         iconId={iconsIndexTwo}
         post={post}
