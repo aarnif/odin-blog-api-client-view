@@ -91,7 +91,7 @@ const BlogPost = ({
         setIconId={setIconId}
       />
 
-      {match && <Comments posts={post} setPosts={setPosts} />}
+      {match && <Comments postId={post.id} posts={post} setPosts={setPosts} />}
     </div>
   );
 };

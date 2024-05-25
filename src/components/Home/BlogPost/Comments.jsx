@@ -1,15 +1,16 @@
+import baseUrl from "../../../baseUrl";
 import blogService from "../../../services/blogService";
 import CommentIcons from "./CommentIcons";
 
 import { useMatch } from "react-router-dom";
 
-const Comment = ({ comment }) => {
+const Comment = ({ postId, comment }) => {
   return (
     <div>
       <div className="w-full flex justify-start items-center mt-4 pb-4">
         <div
           style={{
-            backgroundImage: "none",
+            backgroundImage: `url(${baseUrl}/posts/${postId}/comments/${comment.id}/image)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -89,7 +90,7 @@ const AddComment = ({ setPosts }) => {
   );
 };
 
-const Comments = ({ posts, setPosts }) => {
+const Comments = ({ postId, posts, setPosts }) => {
   const postComments = posts.comments;
   if (!postComments.length) {
     return (
@@ -109,7 +110,7 @@ const Comments = ({ posts, setPosts }) => {
       </h1>
       <AddComment setPosts={setPosts} />
       {postComments.map((comment, index) => (
-        <Comment key={index} comment={comment} />
+        <Comment key={index} postId={postId} comment={comment} />
       ))}
     </div>
   );
