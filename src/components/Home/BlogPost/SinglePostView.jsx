@@ -1,13 +1,20 @@
 import BlogPost from "./index.jsx";
 
+import { useEffect } from "react";
+
 const SinglePostView = ({
   post,
   setPosts,
+  setShowHeaderItems,
   showDropdown,
   setShowDropdown,
   iconId,
   setIconId,
 }) => {
+  useEffect(() => {
+    setShowHeaderItems(false);
+  }, [setShowHeaderItems]);
+
   return (
     <div className="w-full max-w-[800px] mt-40">
       <BlogPost

@@ -1,15 +1,17 @@
 import LinkItem from "./LinkItem";
 import ToggleDarkModeIcon from "../ToggleDarkModeIcon";
 
-import { useScroll, useMotionValueEvent, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 import Icon from "@mdi/react";
 import { mdiMagnify } from "@mdi/js";
 
-const Header = ({ setShowSearchBox }) => {
+const Header = ({ showHeaderItems, setShowHeaderItems, setShowSearchBox }) => {
+  const navigate = useNavigate();
   const { scrollY, scrollYProgress } = useScroll();
   const [showHeader, setShowHeader] = useState(0);
-  const headerHeightInPixels = 120;
+  const headerHeightInPixels = showHeaderItems ? 120 : 72;
   const headerBuffer = 5;
   const headerScrollAmount = 10;
 
@@ -36,6 +38,11 @@ const Header = ({ setShowSearchBox }) => {
     }
   });
 
+  const handleClickHeader = () => {
+    navigate("/");
+    setShowHeaderItems(true);
+  };
+
   return (
     <motion.header
       className="z-10 fixed w-full flex flex-col justify-center items-center shadow-lg bg-white dark:bg-slate-800 dark:text-slate-200 transition"
@@ -56,9 +63,11 @@ const Header = ({ setShowSearchBox }) => {
             }}
           ></div>
         </div>
-        <h1 className="flex-grow text-center font-title text-2xl font-bold">
-          Tech Visionary
-        </h1>
+        <button className="flex-grow" onClick={handleClickHeader}>
+          <h1 className="text-center font-title text-2xl font-bold">
+            Tech Visionary
+          </h1>
+        </button>
         <ul className="w-[160px] flex">
           <ToggleDarkModeIcon />
           <li>
@@ -72,15 +81,18 @@ const Header = ({ setShowSearchBox }) => {
           </li>
         </ul>
       </div>
-      <div className="w-full flex-grow basis-2/5 flex justify-center items-center border-b border-b-slate-300">
-        <nav className="max-w-[260px] flex-grow h-full flex justify-center items-center">
-          <ul className="flex-grow h-full flex justify-around items-center text-lg">
-            <LinkItem to={"/"} itemName={"Home"} />
-            <LinkItem to={"/archive"} itemName={"Archive"} />
-            <LinkItem to={"/about"} itemName={"About"} />
-          </ul>
-        </nav>
-      </div>
+
+      {showHeaderItems && (
+        <div className="w-full flex-grow basis-2/5 flex justify-center items-center border-b border-b-slate-300">
+          <nav className="max-w-[260px] flex-grow h-full flex justify-center items-center">
+            <ul className="flex-grow h-full flex justify-around items-center text-lg">
+              <LinkItem to={"/"} itemName={"Home"} />
+              <LinkItem to={"/archive"} itemName={"Archive"} />
+              <LinkItem to={"/about"} itemName={"About"} />
+            </ul>
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 };

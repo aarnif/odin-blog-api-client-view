@@ -15,6 +15,7 @@ import { AnimatePresence } from "framer-motion";
 const App = () => {
   const match = useMatch("/posts/:id");
   const { posts, setPosts, loading } = useFetchPosts();
+  const [showHeaderItems, setShowHeaderItems] = useState(true);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [iconId, setIconId] = useState(null);
@@ -41,7 +42,11 @@ const App = () => {
 
   return (
     <div onClick={handleCloseDropdown} className="bg-white dark:bg-slate-700">
-      <Header setShowSearchBox={setShowSearchBox} />
+      <Header
+        showHeaderItems={showHeaderItems}
+        setShowHeaderItems={setShowHeaderItems}
+        setShowSearchBox={setShowSearchBox}
+      />
       <ScrollToHashElement />
       <div className="w-full min-h-screen flex flex-col justify-start items-center">
         <Routes>
@@ -81,6 +86,7 @@ const App = () => {
               <SinglePostView
                 post={post}
                 setPosts={setPosts}
+                setShowHeaderItems={setShowHeaderItems}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
                 iconId={iconId}
