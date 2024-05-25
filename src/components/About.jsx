@@ -17,42 +17,43 @@ const About = () => {
         ></div>
 
         <p className="mb-4">
-          We bring you the latest insights and trends in technology, aiming to
-          inspire, educate, and empower our readers with high-quality content.
+          This blog brings you the latest insights and trends in technology,
+          aiming to inspire, educate, and empower readers with high-quality
+          content.
         </p>
 
         <p className="mb-4">
-          Our platform was founded out of a passion for technology and a desire
-          to create a space where tech enthusiasts, professionals, and curious
-          minds can explore and discuss innovations shaping our future. Our team
-          of industry experts and seasoned writers makes complex tech concepts
-          accessible and engaging.
+          Founded out of a passion for technology and a desire to create a space
+          where tech enthusiasts, professionals, and curious minds can explore
+          and discuss innovations shaping our future, this blog is run by a
+          single dedicated author, ensuring a consistent voice and perspective
+          in the content.
         </p>
 
         <p className="mb-4">
           Covering topics like AI, blockchain, cybersecurity, and cloud
-          computing, we strive to be a leading voice in the tech community,
-          fostering a culture of innovation and learning. We believe technology
-          can transform lives, and we aim to keep our readers informed and
-          inspired.
+          computing, this blog strives to be a leading voice in the tech
+          community, fostering a culture of innovation and learning. The belief
+          is that technology can transform lives, and the aim is to keep readers
+          informed and inspired.
         </p>
 
         <p className="mb-4">
-          Our passionate, anonymous writers come from diverse backgrounds in
-          technology, journalism, and digital marketing, delivering insightful
-          content that resonates with our readers.
+          The passionate author brings a wealth of experience in technology,
+          journalism, and digital marketing, delivering insightful content that
+          resonates with readers.
         </p>
 
         <p className="mb-4">
-          We are eager to hear from you. Whether you have questions, topic
-          suggestions, or thoughts to share, feel free to reach out. We highly
-          value your comments and encourage you to engage in discussions on our
-          posts. Together, let's explore the future of technology.
+          This blog is eager to hear from you. Whether you have questions, topic
+          suggestions, or thoughts to share, feel free to reach out. Comments
+          are highly valued, and readers are encouraged to engage in discussions
+          on the posts. Together, let's explore the future of technology.
         </p>
 
         <p className="mb-4">
-          Stay connected through our blog, social media channels, and newsletter
-          for the latest updates and insights.
+          Stay connected through this blog, social media channels, and
+          newsletter for the latest updates and insights.
         </p>
       </div>
     </div>
