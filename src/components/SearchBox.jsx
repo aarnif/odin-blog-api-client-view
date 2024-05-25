@@ -1,38 +1,42 @@
 import baseUrl from "../baseUrl";
 import useFetchPosts from "../hooks/useFetchPosts";
-import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Icon from "@mdi/react";
 import { mdiMagnify } from "@mdi/js";
 import { motion } from "framer-motion";
 
 const SearchItem = ({ post, setShowSearchBox }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    console.log(`Navigate to post ${post.id} titled: ${post.title}`);
+    setShowSearchBox(false);
+    navigate(`/posts/${post.id}`);
+  };
+
   return (
     <button
-      className="w-full flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 transition
+      className="w-full h-[100px] p-4 flex justify-start items-center cursor-pointer rounded-xl hover:bg-slate-300 transition
       dark:hover:bg-slate-600 dark:text-white"
-      onClick={() => setShowSearchBox(false)}
+      onClick={handleClick}
     >
-      <Link
-        to={`/posts/${post.id}`}
-        className="flex justify-start items-center"
-      >
-        <div
-          className="m-4 mr-0 w-12 h-12 rounded-xl bg-slate-300"
-          style={{
-            backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
-        <div className="p-4">
-          <h4 className="text-slate-500 font-semibold dark:text-white">
-            {post.title}
-          </h4>
-          <p className="text-slate-400 dark:text-slate-300">{post.lead}</p>
-        </div>
-      </Link>
+      <div
+        className="min-w-12 h-12 mr-4 rounded-xl bg-slate-300"
+        style={{
+          backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
+      <div>
+        <h4 className="text-slate-500 text-left font-semibold dark:text-white">
+          {post.title}
+        </h4>
+        <p className="text-slate-400 text-left dark:text-slate-300">
+          {post.lead} {post.createdAt}
+        </p>
+      </div>
     </button>
   );
 };
@@ -57,14 +61,14 @@ const SearchBox = ({ setShowSearchBox }) => {
     >
       <motion.div
         key={"searchBox"}
-        className="w-[450px] h-[600px] bg-white rounded-xl text-slate-700 z-100 dark:bg-slate-700 dark:text-white"
+        className="overflow-auto w-[500px] h-[600px] bg-white rounded-xl text-slate-700 z-100 dark:bg-slate-700 dark:text-white"
         onClick={(e) => e.stopPropagation()}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1, duration: 0.4 }}
         exit={{ y: -50, opacity: 0 }}
         transition={{ delay: 0.4, type: "tween" }}
       >
-        <div className="w-full overflow-hidden border-b border-b-slate-300">
+        <div className="w-full border-b border-b-slate-300">
           <div className="p-4 flex justify-between items-center">
             <Icon path={mdiMagnify} size={1.2} className="fill-current" />
             <input

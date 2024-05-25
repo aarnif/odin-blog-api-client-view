@@ -33,8 +33,14 @@ const App = () => {
     return <div>Loading...</div>;
   }
 
+  if (showSearchBox) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
   return (
-    <div onClick={handleCloseDropdown}>
+    <div onClick={handleCloseDropdown} className="bg-white dark:bg-slate-700">
       <Header setShowSearchBox={setShowSearchBox} />
       <ScrollToHashElement />
       <div className="w-full min-h-screen flex flex-col justify-start items-center">
