@@ -19,7 +19,7 @@ const Item = ({ post }) => {
         </div>
       </div>
       <div
-        className="w-60 h-40 bg-slate-300"
+        className="min-w-60 h-40 bg-slate-400 rounded-lg"
         style={{
           backgroundImage: `url(${baseUrl}/posts/${post.id}/image)`,
           backgroundSize: "cover",
